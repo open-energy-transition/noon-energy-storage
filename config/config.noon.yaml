@@ -21,10 +21,10 @@ remote:
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#run
 run:
   prefix: "scenarios"
-  name: "baseline-nomds"
+  name: "cy2013-nomds"
   scenarios:
     enable: false
-    file: config/scenarios.form.yaml
+    file: config/scenarios.noon.yaml
   disable_progressbar: false
   shared_resources:
     policy: false
@@ -38,7 +38,7 @@ foresight: overnight
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#scenario
 scenario:
   clusters:
-  - 52
+  - 27 # like PyPSA-DE, 52 like Form Energy
   opts:
   - ""
   sector_opts:
@@ -63,8 +63,8 @@ countries:
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#snapshots
 snapshots:
-  start: "2013-01-01"
-  end: "2014-01-01"
+  start: "2013-03-01" # "2013-01-01"
+  end: "2013-03-08" # "2014-01-01"
   inclusive: left
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#enable
@@ -104,13 +104,14 @@ electricity:
     contingency: 4000
   max_hours:
     battery: 6
-    "li-ion": [1, 2, 4, 8]
-    lfp: [6]
-    vanadium: [10]
-    lair: [12]
-    pair: [24]
-    "iron-air": [100]
-    H2: [168]
+    "li-ion": 6
+    lfp: 6
+    vanadium: 10
+    lair: 12
+    pair: 24
+    "iron-air": 100
+    co2es: 300
+    H2: 168
   extendable_carriers:
     Generator:
     - solar
@@ -181,8 +182,8 @@ atlite:
       dx: 0.3
       dy: 0.3
       time:
-      - '2013'
-      - '2013'
+      - '2013-03-01'
+      - '2013-03-08'
       chunks:
         time: 500
       prepare_kwargs:
@@ -782,7 +783,7 @@ sector:
   heat_pump_sink_T_individual_heating: 55.0
   reduce_space_heat_exogenously: true
   reduce_space_heat_exogenously_factor:
-    2020: 0.1
+    2020: 0.01
     2025: 0.09
     2030: 0.09
     2035: 0.11
@@ -1079,7 +1080,20 @@ clustering:
   administrative:
     level: 1
     countries: {}
-  focus_weights: false
+  focus_weights: # false
+    # 27 nodes: 3 for FR and Italy, 2 each for Denmark, 1 per each of other 10 "Stromnachbarn"
+      'FR': 0.11111 # (1/27*3)
+      'IT': 0.11111 # (1/27*3)
+      'AT': 0.03704 # (1/27*1)
+      'BE': 0.03704 # (1/27*1)
+      'CH': 0.03704 # (1/27*1)
+      'CZ': 0.03704 # (1/27*1)
+      'DE': 0.40739 # (1/27*11)
+      'DK': 0.07407 # (1/27*2)
+      'LU': 0.03704 # (1/27*1)
+      'NL': 0.03704 # (1/27*1)
+      'PL': 0.03704 # (1/27*1)
+      'SE': 0.03704 # (1/27*1)
   copperplate_regions: []
   build_bidding_zones:
     remove_islands: false
@@ -1103,8 +1117,8 @@ clustering:
       ramp_limit_down: max
     buses: {}
   temporal:
-    resolution_elec: false
-    resolution_sector: false
+    resolution_elec: False
+    resolution_sector: 24h
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#adjustments
 adjustments:
@@ -1121,7 +1135,7 @@ solving:
   options:
     clip_p_max_pu: 0.01
     load_shedding:
-      enable: false
+      enable: true
       default_cost: 100000
       all_carriers: true
       carriers: {}
@@ -1172,8 +1186,8 @@ solving:
     BAU: false
     SAFE: false
   solver:
-    name: gurobi
-    options: "gurobi-default"
+    name: highs # gurobi
+    options: "highs-default" # "gurobi-default"
   solver_options:
     "highs-default":
       threads: 1

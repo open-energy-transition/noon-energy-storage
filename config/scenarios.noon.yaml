@@ -19,22 +19,22 @@ cy2013-nomds:
 cy2013-ldes:
   sector:
     stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air battery"]
+    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air"]
 
 cy2013-uldes:
   sector:
     stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "noon-energy-storage"]
+    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "co2es"]
 
 cy2013-mds:
   sector:
     stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air battery", "noon-energy-storage"]
+    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air", "co2es"]
 
 cy2010-mds:
   sector:
     stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air battery", "noon-energy-storage"]
+    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air", "co2es"]
   snapshots:
     start: "2010-01-01"
     end: "2011-01-01"
@@ -67,7 +67,7 @@ cy2010-mds:
 cy2012-mds:
   sector:
     stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air battery", "noon-energy-storage"]
+    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air", "co2es"]
   snapshots:
     start: "2012-01-01"
     end: "2013-01-01"
@@ -100,7 +100,7 @@ cy2012-mds:
 cy1996-mds:
   sector:
     stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air battery", "noon-energy-storage"]
+    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "iron-air", "co2es"]
   snapshots:
     start: "1996-01-01"
     end: "1997-01-01"

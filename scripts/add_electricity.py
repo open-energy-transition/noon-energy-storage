@@ -112,6 +112,11 @@ STORE_LOOKUP = {
         "charger": "iron-air battery charge",
         "discharger": "iron-air battery discharge",
     },
+    "co2es": {
+        "store": "co2es battery",
+        "charger": "co2es battery charge",
+        "discharger": "co2es battery discharge",
+    },
     "H2": {
         "store": "hydrogen storage underground",
         "charger": "electrolysis",

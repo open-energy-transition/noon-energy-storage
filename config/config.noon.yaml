@@ -21,7 +21,7 @@ remote:
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#run
 run:
   prefix: "scenarios"
-  name: "cy2013-nomds"
+  name: "cy2021-nomds"
   scenarios:
     enable: false
     file: config/scenarios.noon.yaml
@@ -63,8 +63,8 @@ countries:
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#snapshots
 snapshots:
-  start: "2013-03-01" # "2013-01-01"
-  end: "2013-03-08" # "2014-01-01"
+  start: "2021-01-01"
+  end: "2022-01-01"
   inclusive: left
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#enable
@@ -110,7 +110,8 @@ electricity:
     lair: 12
     pair: 24
     "iron-air": 100
-    co2es: 300
+    mds: 100
+    coes: 300
     H2: 168
   extendable_carriers:
     Generator:
@@ -166,7 +167,7 @@ electricity:
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#atlite
 atlite:
-  default_cutout: "europe-2013-sarah3-era5"
+  default_cutout: "europe-2021-sarah3-era5"
   nprocesses: 1
   show_progress: false
   plot_availability_matrix: false
@@ -182,8 +183,8 @@ atlite:
       dx: 0.3
       dy: 0.3
       time:
-      - '2013-03-01'
-      - '2013-03-08'
+      - '2021-01-01'
+      - '2022-01-01'
       chunks:
         time: 500
       prepare_kwargs:

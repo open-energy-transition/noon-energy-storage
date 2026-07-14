@@ -113,11 +113,13 @@ STORE_LOOKUP = {
         "discharger": "iron-air battery discharge",
     },
     "mds": {
-        "store": "mds battery",
-        "charger": "mds battery charge",
-        "discharger": "mds battery discharge",
+        # noon-energy project
+        "store": "iron-air battery",
+        "charger": "iron-air battery charge",
+        "discharger": "iron-air battery discharge",
     },
     "coes": {
+        # noon-energy project
         "store": "coes battery",
         "charger": "coes battery charge",
         "discharger": "coes battery discharge",
@@ -1218,7 +1220,7 @@ if __name__ == "__main__":
     if "snakemake" not in globals():
         from scripts._helpers import mock_snakemake
 
-        snakemake = mock_snakemake("add_electricity", clusters=60)
+    snakemake = mock_snakemake("add_electricity", clusters=60)
     configure_logging(snakemake)  # pylint: disable=E0606
     set_scenario_config(snakemake)
 

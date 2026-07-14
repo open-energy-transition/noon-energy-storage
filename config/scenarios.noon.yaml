@@ -35,7 +35,7 @@ cy2021-mds-coes-su:
 
 ### Weather year
 # (technology = mds-coes)
-# cy2023-mds:
+# cy2023-mds-coes-su:
 #   sector:
 #     stores: ["H2"]
 #     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds", "coes"]

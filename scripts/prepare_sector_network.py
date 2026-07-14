@@ -610,7 +610,8 @@ def add_carrier_buses(
         capital_cost=capital_cost,
     )
 
-    fossils = ["coal", "gas", "oil", "lignite"]
+    fossils = ["coal", "gas", "oil", "lignite", "uranium"]
+
     if options["fossil_fuels"] and carrier in fossils:
         suffix = ""
 

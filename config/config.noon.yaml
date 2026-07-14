@@ -1,6 +1,7 @@
-%YAML 1.1
----
 # yaml-language-server: $schema=./schema.default.json
+# SPDX-FileCopyrightText: Contributors to PyPSA-Eur <https://github.com/pypsa/pypsa-eur>
+#
+# SPDX-License-Identifier: CC0-1.0
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#version
 version: v2026.02.0
@@ -21,7 +22,7 @@ remote:
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#run
 run:
   prefix: ""
-  name: "cy2021-nomds"
+  name: "cy2021-mds-coes"
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml
@@ -75,7 +76,7 @@ co2_budget:
 electricity:
   max_hours:
     mds: 100
-    coes: 300
+    coes: 200
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#atlite
 atlite:
@@ -120,7 +121,6 @@ pypsa_eur:
   - "solar-hsat"
   - solar
   - ror
-  - nuclear # no nuclear # FE input
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#sector
 sector:
@@ -133,25 +133,61 @@ sector:
   district_heating:
     potential: 0.6 # 0.3 # FE input
     progress:
+      2020: 0.0
+      2025: 0.1
+      2030: 0.25
       2035: 0.4 # 0.45 # FE input
+      2040: 0.55
+      2045: 0.75
+      2050: 1.0
   bev_dsm: true
   bev_dsm_availability: 0.5 # 0.2 # FE input
   bev_charge_rate: 0.011 # 0.007 # FE input
   v2g: true
   land_transport_fuel_cell_share:
+    2020: 0
+    2025: 0
+    2030: 0
     2035: 0
+    2040: 0
+    2045: 0
+    2050: 0
   land_transport_electric_share:
+    2020: 0
+    2025: 0.05
+    2030: 0.2
     2035: 0.45 # 0.30 # FE input
+    2040: 0.7
+    2045: 0.85
+    2050: 1
   land_transport_ice_share:
+    2020: 1
+    2025: 0.95
+    2030: 0.8
     2035: 0.55 # 0 # FE input
+    2040: 0.3
+    2045: 0.15
+    2050: 0
   reduce_space_heat_exogenously: true
   reduce_space_heat_exogenously_factor:
+    2020: 0.1
+    2025: 0.09
+    2030: 0.09
     2035: 0.11  # 0.21 # FE input
+    2040: 0.16
+    2045: 0.21
+    2050: 0.29
   tes: false
   dac: true
   methanation: false
   co2_sequestration_potential:
+    2020: 0
+    2025: 0
+    2030: 40
     2035: 100 # 22.3 # FE input
+    2040: 180
+    2045: 250
+    2050: 250
   residential_heat:
     dsm:
       enable: true
@@ -164,7 +200,7 @@ sector:
   H2_network: false
   gas_network: false
   H2_retrofit: false
-  
+
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#costs
 costs:

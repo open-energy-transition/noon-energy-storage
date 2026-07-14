@@ -11,55 +11,59 @@
 #   electricity:
 #       renewable_carriers: [wind, solar] # override the list of renewable carriers
 
-cy2021-nomds:
-  sector:
-    stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair"]
+### Technology
+# (weather year = 2021)
+# cy2021-nomds-nocoes:
+#   sector:
+#     stores: ["H2"]
+#     storage_units: ["li-ion battery", "vanadium", "lair", "pair"]
 
-cy2021-ldes:
-  sector:
-    stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds"]
+# cy2021-mdes:
+#   sector:
+#     stores: ["H2"]
+#     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds"]
 
-cy2021-uldes:
-  sector:
-    stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "coes"]
+# cy2021-coes-su:
+#   sector:
+#     stores: ["H2"]
+#     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "coes"]
 
-cy2021-mds:
+cy2021-mds-coes-su:
   sector:
     stores: ["H2"]
     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds", "coes"]
 
-cy2023-mds:
-  sector:
-    stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds", "coes"]
-  snapshots:
-    start: "2023-01-01"
-    end: "2024-01-01"
-  atlite:
-    default_cutout: europe-2023-sarah3-era5
-    cutouts:
-      europe-2023-sarah3-era5:
-        module: [sarah, era5] # in priority order
-        x: [-12., 42.]
-        y: [33., 72.]
-        dx: 0.3
-        dy: 0.3
-        time: ['2023', '2023']
-  renewable:
-    onwind:
-      cutout: europe-2023-sarah3-era5
-    offwind-ac:
-      cutout: europe-2023-sarah3-era5
-    offwind-dc:
-      cutout: europe-2023-sarah3-era5
-    offwind-float:
-      cutout: europe-2023-sarah3-era5
-    solar:
-      cutout: europe-2023-sarah3-era5
-    solar-hsat:
-      cutout: europe-2023-sarah3-era5
-    hydro:
-      cutout: europe-2023-sarah3-era5
+### Weather year
+# (technology = mds-coes)
+# cy2023-mds:
+#   sector:
+#     stores: ["H2"]
+#     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds", "coes"]
+#   snapshots:
+#     start: "2023-01-01"
+#     end: "2024-01-01"
+#   atlite:
+#     default_cutout: europe-2023-sarah3-era5
+#     cutouts:
+#       europe-2023-sarah3-era5:
+#         module: [sarah, era5] # in priority order
+#         x: [-12., 42.]
+#         y: [33., 72.]
+#         dx: 0.3
+#         dy: 0.3
+#         time: ['2023', '2023']
+#   renewable:
+#     onwind:
+#       cutout: europe-2023-sarah3-era5
+#     offwind-ac:
+#       cutout: europe-2023-sarah3-era5
+#     offwind-dc:
+#       cutout: europe-2023-sarah3-era5
+#     offwind-float:
+#       cutout: europe-2023-sarah3-era5
+#     solar:
+#       cutout: europe-2023-sarah3-era5
+#     solar-hsat:
+#       cutout: europe-2023-sarah3-era5
+#     hydro:
+#       cutout: europe-2023-sarah3-era5

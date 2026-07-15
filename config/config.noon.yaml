@@ -22,7 +22,8 @@ remote:
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#run
 run:
   prefix: ""
-  name: "cy2021-mds-coes"
+  name:
+  - cy2021-mds-coes-su
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml
@@ -77,6 +78,10 @@ electricity:
   max_hours:
     mds: 100
     coes: 200
+  extendable_carriers: # No CCGT and OCGT # FE input
+    StorageUnit: ["li-ion", "vanadium", "lair", "pair", "mds"]
+    Store: ["H2", "coes"]
+
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#atlite
 atlite:
@@ -110,6 +115,9 @@ lines:
 transmission_projects:
   include:
     manual: true # false # FE input
+# docs-load in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#load
+load:
+  fixed_year: 2021
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#pypsa_eur
 pypsa_eur:
@@ -205,6 +213,7 @@ sector:
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#costs
 costs:
   year: 2030
+  custom_cost_fn: data/custom_costs_base.csv
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#clustering
 clustering:
@@ -218,6 +227,7 @@ clustering:
 solving:
   options:
     load_shedding:
+      enable: true
   solver:
-    name: highs # gurobi
-    options: "highs-default" # "gurobi-default"
+    name: gurobi
+    options: "gurobi-default"

@@ -3,14 +3,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-# This file is used to define the scenarios that are run by snakemake. Each entry on the first level is a scenario. Each scenario can contain configuration overrides with respect to the config/config.yaml settings.
-#
-# Example
-#
-# custom-scenario: # name of the scenario
-#   electricity:
-#       renewable_carriers: [wind, solar] # override the list of renewable carriers
-
 ### Technology
 # (weather year = 2021)
 # cy2021-nomds-nocoes:
@@ -29,13 +21,21 @@
 #     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "coes"]
 
 cy2021-mds-coes-su:
-  sector:
-    stores: ["H2"]
-    storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds", "coes"]
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "vanadium", "lair", "pair", "mds", "coes"]
+      Store: ["H2"]
+  costs:
+    custom_cost_fn: data/custom_costs_base_su.csv
 
 ### Weather year
 # (technology = mds-coes)
 # cy2023-mds-coes-su:
+
+#   load:
+#     fixed_year: 2023
+
 #   sector:
 #     stores: ["H2"]
 #     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds", "coes"]

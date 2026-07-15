@@ -385,6 +385,8 @@ plotting:
     lair: "Liquid-Air Storage"
     pair: "Compressed-Air-Adiabatic Storage"
     iron-air: "Iron-Air Storage"
+    mds: "Iron-Air Storage" # noon-energy
+    coes: "Electrofuels Storage" # noon-energy
     lines: "Transmission Lines"
     ror: "Run of River"
     load: "Load Shedding"
@@ -550,6 +552,15 @@ plotting:
     iron-air: '#edba1c'
     iron-air charger: '#edba1c'
     iron-air discharger: '#edba1c'
+
+    # noon-energy
+    mds: '#edba1c'
+    mds charger: '#edba1c'
+    mds discharger: '#edba1c'
+    coes: '#ed9d1c'
+    coes charger: '#ed9d1c'
+    coes discharger: '#ed9d1c'
+
     # hot water storage
     water tanks: '#e69487'
     residential rural water tanks: '#f7b7a3'

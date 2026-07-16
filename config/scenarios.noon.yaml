@@ -24,7 +24,18 @@ cy2021-mds-coes-su:
 
   electricity:
     extendable_carriers:
-      StorageUnit: ["li-ion", "vanadium", "lair", "pair", "mds", "coes"]
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
+      Store: ["H2"]
+  costs:
+    custom_cost_fn: data/custom_costs_base_su.csv
+
+cy2021-mds-coes-su-overnight:
+
+  foresight: overnight
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
       Store: ["H2"]
   costs:
     custom_cost_fn: data/custom_costs_base_su.csv

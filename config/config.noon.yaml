@@ -24,12 +24,13 @@ run:
   prefix: ""
   name:
   - cy2021-mds-coes-su
+  # - cy2021-mds-coes-su-overnight
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#foresight
-foresight: overnight
+foresight: myopic
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#scenario
 scenario:
@@ -79,7 +80,7 @@ electricity:
     mds: 100
     coes: 200
   extendable_carriers: # No CCGT and OCGT # FE input
-    StorageUnit: ["li-ion", "vanadium", "lair", "pair", "mds"]
+    StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds"]
     Store: ["H2", "coes"]
 
 
@@ -134,7 +135,7 @@ pypsa_eur:
 sector:
   transport: true
   heating: true
-  biomass: false
+  biomass: true # false # FE input
   industry: false
   agriculture: false
   fossil_fuels: true

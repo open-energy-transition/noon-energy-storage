@@ -11,11 +11,16 @@ all,battery inverter,marginal_cost,0,EUR/MWh,Default value to prevent mathematic
 all,home battery storage,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
 all,water tank charger,marginal_cost,0.03,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
 all,central water pit charger,marginal_cost,0.025,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
-all,coes battery,investment,1770,EUR/MWh,Noon Energy. From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates),Raw data: 2 $2025/kWh_discharge
-all,coes battery,lifetime,30,years,Noon Energy. ,
-all,coes battery discharge,investment,1592920,EUR/MW,Noon Energy. From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates),Raw data: 1800 $2025/kW_discharge
-all,coes battery discharge,FOM,5.3,%/year,Noon Energy. Derived dividing absolute FOM by CAPEX-power,Raw data: 95 $2025/kW_discharge
-all,coes battery discharge,efficiency,0.75,per unit,Noon Energy. ,
-all,coes battery discharge,lifetime,30,years,Noon Energy. ,
-all,coes battery charge,efficiency,0.85,per unit,Noon Energy. ,
-all,coes battery charge,lifetime,30,years,Noon Energy. ,
+all,coes battery,investment,1327,EUR/MWh,Noon Energy (base),"Raw data: 2 $2025/kWh_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)
+- From /kWh_discharge to /kWh_charge multiplying by eff_discharge = 0.75"
+all,coes battery,lifetime,30,years,Noon Energy (base),
+all,coes battery discharge,investment,1592920,EUR/MW,Noon Energy (base),"Raw data: 1800 $2025/kW_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)
+- From /kWh_discharge to /kWh_charge is automatically done within PyPSA-Eur (link capex must refer to bus0)"
+all,coes battery discharge,FOM,5.3,%/year,Noon Energy (base),"Raw data: 95 $2025/kW_discharge
+- Derived dividing absolute FOM by CAPEX-power"
+all,coes battery discharge,efficiency,0.75,per unit,Noon Energy (base),
+all,coes battery discharge,lifetime,30,years,Noon Energy (base),
+all,coes battery charge,efficiency,0.85,per unit,Noon Energy (base),
+all,coes battery charge,lifetime,30,years,Noon Energy (base),

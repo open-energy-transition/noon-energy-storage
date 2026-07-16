@@ -1054,6 +1054,29 @@ def add_battery_constraints(n):
     n.model.add_constraints(lhs == 0, name="Link-charger_ratio")
 
 
+def add_coes_constraints(n):
+    """
+    Add constraint for coes battery ensuring that charger <= 5 * discharger, i.e.
+    1 * charger_size - 5 * efficiency * discharger_size <= 0
+    """
+    if not n.links.p_nom_extendable.any():
+        return
+
+    discharger_bool = n.links.index.str.contains("coes discharger")
+    charger_bool = n.links.index.str.contains("coes charger")
+
+    dischargers_ext = n.links[discharger_bool].query("p_nom_extendable").index
+    chargers_ext = n.links[charger_bool].query("p_nom_extendable").index
+
+    eff = n.links.efficiency[dischargers_ext].values
+    lhs = (
+        n.model["Link-p_nom"].loc[chargers_ext]
+        - n.model["Link-p_nom"].loc[dischargers_ext] * eff * 5
+    )
+
+    n.model.add_constraints(lhs <= 0, name="Link-charger_ratio-coes")
+
+
 def add_lossy_bidirectional_link_constraints(n):
     if not n.links.p_nom_extendable.any() or not any(n.links.get("reversed", [])):
         return
@@ -1280,6 +1303,12 @@ def extra_functionality(
             add_TES_charger_ratio_constraints(n)
 
     add_battery_constraints(n)
+
+    if "coes" in n.config.get("electricity", {}).get("extendable_carriers", {}).get(
+        "Store", []
+    ):
+        add_coes_constraints(n)
+
     add_lossy_bidirectional_link_constraints(n)
     add_pipe_retrofit_constraint(n)
     if n._multi_invest:
@@ -1477,10 +1506,11 @@ if __name__ == "__main__":
         from scripts._helpers import mock_snakemake
 
         snakemake = mock_snakemake(
-            "solve_sector_network",
+            "solve_sector_network_myopic",
+            run="test-sector-myopic",
             opts="",
             clusters="5",
-            configfiles="config/test/config.overnight.yaml",
+            configfiles="config/test/config.myopic.yaml",
             sector_opts="",
             planning_horizons="2030",
         )
@@ -1490,6 +1520,7 @@ if __name__ == "__main__":
 
     solve_opts = snakemake.params.solving["options"]
     cf_solving = snakemake.params.solving["options"]
+    solver_name = snakemake.params.solving["solver"]["name"]
 
     np.random.seed(solve_opts.get("seed", 123))
 

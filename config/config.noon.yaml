@@ -23,7 +23,8 @@ remote:
 run:
   prefix: ""
   name:
-  - cy2021-mds-coes-su
+  # - cy2021-mds-coes-su
+  - cy2021-mds-coes
   # - cy2021-mds-coes-su-overnight
   scenarios:
     enable: true
@@ -135,7 +136,7 @@ pypsa_eur:
 sector:
   transport: true
   heating: true
-  biomass: true # false # FE input
+  biomass: false # false # FE input
   industry: false
   agriculture: false
   fossil_fuels: true

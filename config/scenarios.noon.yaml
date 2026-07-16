@@ -20,6 +20,15 @@
 #     stores: ["H2"]
 #     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "coes"]
 
+cy2021-mds-coes:
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds"]
+      Store: ["H2", "coes"]
+  costs:
+    custom_cost_fn: data/custom_costs_base.csv
+
 cy2021-mds-coes-su:
 
   electricity:

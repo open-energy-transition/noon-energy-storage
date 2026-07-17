@@ -23,15 +23,18 @@ remote:
 run:
   prefix: ""
   name:
-  # - cy2021-mds-coes-su
-  - cy2021-mds-coes
-  # - cy2021-mds-coes-su-overnight
+  # - cy2021-base
+  # - cy2021-mds-coes
+  # - cy2021-mds-coes-store
+  # - cy2021-mds-coes-bio
+  # - cy2021-mds-coes-overnight
+  - cy2021-mds-coes-overnight-1H
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#foresight
-foresight: myopic
+foresight: overnight # must be controlled here, not in the scenarios.noon.yaml
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#scenario
 scenario:
@@ -79,11 +82,10 @@ co2_budget:
 electricity:
   max_hours:
     mds: 100
-    coes: 200
+    coes: 300
   extendable_carriers: # No CCGT and OCGT # FE input
-    StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds"]
-    Store: ["H2", "coes"]
-
+    StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
+    Store: ["H2"]
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#atlite
 atlite:
@@ -120,6 +122,7 @@ transmission_projects:
 # docs-load in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#load
 load:
   fixed_year: 2021
+  scaling_factor: 1.00
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#pypsa_eur
 pypsa_eur:
@@ -211,11 +214,10 @@ sector:
   gas_network: false
   H2_retrofit: false
 
-
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#costs
 costs:
   year: 2030
-  custom_cost_fn: data/custom_costs_base.csv
+  custom_cost_fn: data/custom_costs_coes_300h_su.csv
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#clustering
 clustering:

@@ -5,40 +5,49 @@
 
 ### Technology
 # (weather year = 2021)
-# cy2021-nomds-nocoes:
-#   sector:
-#     stores: ["H2"]
-#     storage_units: ["li-ion battery", "vanadium", "lair", "pair"]
 
-# cy2021-mdes:
-#   sector:
-#     stores: ["H2"]
-#     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds"]
+cy2021-base:
 
-# cy2021-coes-su:
-#   sector:
-#     stores: ["H2"]
-#     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "coes"]
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair"]
+      Store: ["H2"]
+
 
 cy2021-mds-coes:
 
   electricity:
     extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds"]
-      Store: ["H2", "coes"]
-  costs:
-    custom_cost_fn: data/custom_costs_base.csv
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
+      Store: ["H2"]
 
-cy2021-mds-coes-su:
+  costs:
+    custom_cost_fn: data/custom_costs_coes_300h_su.csv
+
+cy2021-mds-coes-store:
 
   electricity:
     extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
-      Store: ["H2"]
-  costs:
-    custom_cost_fn: data/custom_costs_base_su.csv
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds"]
+      Store: ["H2", "coes"]
 
-cy2021-mds-coes-su-overnight:
+  costs:
+    custom_cost_fn: data/custom_costs_coes_base_store.csv
+
+cy2021-mds-coes-bio:
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
+      Store: ["H2"]
+
+  sector:
+    biomass: true
+
+  costs:
+    custom_cost_fn: data/custom_costs_coes_300h_su.csv
+
+cy2021-mds-coes-overnight:
 
   foresight: overnight
 
@@ -46,44 +55,24 @@ cy2021-mds-coes-su-overnight:
     extendable_carriers:
       StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
       Store: ["H2"]
+
   costs:
-    custom_cost_fn: data/custom_costs_base_su.csv
+    custom_cost_fn: data/custom_costs_coes_300h_su.csv
 
-### Weather year
-# (technology = mds-coes)
-# cy2023-mds-coes-su:
+cy2021-mds-coes-overnight-1H:
 
-#   load:
-#     fixed_year: 2023
+  foresight: overnight
 
-#   sector:
-#     stores: ["H2"]
-#     storage_units: ["li-ion battery", "vanadium", "lair", "pair", "mds", "coes"]
-#   snapshots:
-#     start: "2023-01-01"
-#     end: "2024-01-01"
-#   atlite:
-#     default_cutout: europe-2023-sarah3-era5
-#     cutouts:
-#       europe-2023-sarah3-era5:
-#         module: [sarah, era5] # in priority order
-#         x: [-12., 42.]
-#         y: [33., 72.]
-#         dx: 0.3
-#         dy: 0.3
-#         time: ['2023', '2023']
-#   renewable:
-#     onwind:
-#       cutout: europe-2023-sarah3-era5
-#     offwind-ac:
-#       cutout: europe-2023-sarah3-era5
-#     offwind-dc:
-#       cutout: europe-2023-sarah3-era5
-#     offwind-float:
-#       cutout: europe-2023-sarah3-era5
-#     solar:
-#       cutout: europe-2023-sarah3-era5
-#     solar-hsat:
-#       cutout: europe-2023-sarah3-era5
-#     hydro:
-#       cutout: europe-2023-sarah3-era5
+  electricity:
+    max_hours:
+      coes: 200
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
+      Store: ["H2"]
+
+  costs:
+    custom_cost_fn: data/custom_costs_coes_200h_su.csv
+
+  clustering:
+    temporal:
+      resolution_sector: 1h

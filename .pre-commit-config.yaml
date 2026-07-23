@@ -60,7 +60,7 @@ repos:
   rev: v6.2.0
   hooks:
   - id: reuse-lint-file
-    exclude: ^data/custom_costs_coes.*\.csv$
+    exclude: ^data/custom_costs_res.*\.csv$
 
 # Use gitleaks to prevent committing secrets
 - repo: https://github.com/gitleaks/gitleaks

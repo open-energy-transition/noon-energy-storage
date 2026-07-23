@@ -1,0 +1,69 @@
+planning_horizon,technology,parameter,value,unit,source,further description
+all,solar,marginal_cost,0.01,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,onwind,marginal_cost,0.015,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,offwind,marginal_cost,0.015,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,hydro,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,H2,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,electrolysis,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,fuel cell,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,battery,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,battery inverter,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,home battery storage,marginal_cost,0,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,water tank charger,marginal_cost,0.03,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,central water pit charger,marginal_cost,0.025,EUR/MWh,Default value to prevent mathematical degeneracy in optimisation,
+all,Compressed-Air-Adiabatic-store,investment,33600,EUR/MWh,Form Energy assumption,"Raw data: 30000 €2022/Mwh
+- From €2022 to €2025 multiplying by ~ 1.12 (Source: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_ainr/default/table?lang=en&category=prc.prc_hicp.prc_hicp_ecoicop2)"
+all,Compressed-Air-Adiabatic-store,lifetime,40,years,Form Energy assumption,
+all,Compressed-Air-Adiabatic-bicharger,investment,1932000,EUR/MW,Form Energy assumption,"Raw data: 1725000 €2022/MW
+- From €2022 to €2025 multiplying by ~ 1.12 (Source: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_ainr/default/table?lang=en&category=prc.prc_hicp.prc_hicp_ecoicop2)"
+all,Compressed-Air-Adiabatic-bicharger,lifetime,40,years,Form Energy assumption,
+all,res battery 300h,investment,7080,EUR/MWh,Noon Energy (duration = 300 h),"Raw data: 8 $2025/kWh_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
+all,res battery 300h,FOM,4,%/year,Noon Energy (duration = 300 h),"Raw data: 95 $2025/kW_discharge
+- Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
+all,res battery 300h,lifetime,30,years,Noon Energy (duration = 300 h),
+all,res battery discharge 300h,efficiency,0.75,per unit,Noon Energy (duration = 300 h),
+all,res battery discharge 300h,lifetime,30,years,Noon Energy (duration = 300 h),
+all,res battery charge 300h,efficiency,0.85,per unit,Noon Energy (duration = 300 h),
+all,res battery charge 300h,lifetime,30,years,Noon Energy (duration = 300 h),
+all,res battery 200h,investment,9735,EUR/MWh,Noon Energy (duration = 200 h),"Raw data: 11 $2025/kWh_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
+all,res battery 200h,FOM,4.3,%/year,Noon Energy (duration = 200 h),"Raw data: 95 $2025/kW_discharge
+- Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
+all,res battery 200h,lifetime,30,years,Noon Energy (duration = 200 h),
+all,res battery discharge 200h,efficiency,0.75,per unit,Noon Energy (duration = 200 h),
+all,res battery discharge 200h,lifetime,30,years,Noon Energy (duration = 200 h),
+all,res battery charge 200h,efficiency,0.85,per unit,Noon Energy (duration = 200 h),
+all,res battery charge 200h,lifetime,30,years,Noon Energy (duration = 200 h),
+all,res battery 100h,investment,17699,EUR/MWh,Noon Energy (duration = 100 h),"Raw data: 20 $2025/kWh_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
+all,res battery 100h,FOM,4.8,%/year,Noon Energy (duration = 100 h),"Raw data: 95 $2025/kW_discharge
+- Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
+all,res battery 100h,lifetime,30,years,Noon Energy (duration = 100 h),
+all,res battery discharge 100h,efficiency,0.75,per unit,Noon Energy (duration = 100 h),
+all,res battery discharge 100h,lifetime,30,years,Noon Energy (duration = 100 h),
+all,res battery charge 100h,efficiency,0.85,per unit,Noon Energy (duration = 100 h),
+all,res battery charge 100h,lifetime,30,years,Noon Energy (duration = 100 h),
+all,res battery 24h,investment,68142,EUR/MWh,Noon Energy (duration = 24 h),"Raw data:77 $2025/kWh_discharge
+- Derived starting from 1800 $2025/kW / duration + 2 $2025/kWh
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
+all,res battery 24h,FOM,5.1,%/year,Noon Energy (duration = 24 h),"Raw data: 95 $2025/kW_discharge
+- Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
+all,res battery 24h,lifetime,30,years,Noon Energy (duration = 24 h),
+all,res battery discharge 24h,efficiency,0.75,per unit,Noon Energy (duration = 24 h),
+all,res battery discharge 24h,lifetime,30,years,Noon Energy (duration = 24 h),
+all,res battery charge 24h,efficiency,0.85,per unit,Noon Energy (duration = 24 h),
+all,res battery charge 24h,lifetime,30,years,Noon Energy (duration = 24 h),
+all,res battery,investment,1327,EUR/MWh,Noon Energy (base),"Raw data: 2 $2025/kWh_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)
+- From /kWh_discharge to /kWh_charge multiplying by eff_discharge = 0.75"
+all,res battery,lifetime,30,years,Noon Energy (base),
+all,res battery discharge,investment,1592920,EUR/MW,Noon Energy (base),"Raw data: 1800 $2025/kW_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)
+- From /kWh_discharge to /kWh_charge is automatically done within PyPSA-Eur (link capex must refer to bus0)"
+all,res battery discharge,FOM,5.3,%/year,Noon Energy (base),"Raw data: 95 $2025/kW_discharge
+- Derived dividing absolute FOM by CAPEX-power"
+all,res battery discharge,efficiency,0.75,per unit,Noon Energy (base),
+all,res battery discharge,lifetime,30,years,Noon Energy (base),
+all,res battery charge,efficiency,0.85,per unit,Noon Energy (base),
+all,res battery charge,lifetime,30,years,Noon Energy (base),

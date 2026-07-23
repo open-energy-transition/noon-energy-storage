@@ -112,18 +112,6 @@ STORE_LOOKUP = {
         "charger": "iron-air battery charge",
         "discharger": "iron-air battery discharge",
     },
-    "mds": {
-        # noon-energy project
-        "store": "iron-air battery",
-        "charger": "iron-air battery charge",
-        "discharger": "iron-air battery discharge",
-    },
-    "coes": {
-        # noon-energy project
-        "store": "coes battery",
-        "charger": "coes battery charge",
-        "discharger": "coes battery discharge",
-    },
     "H2": {
         "store": "hydrogen storage underground",
         "charger": "electrolysis",
@@ -133,6 +121,55 @@ STORE_LOOKUP = {
         "store": "hydrogen storage tank type 1 including compressor",
         "charger": "electrolysis",
         "discharger": "fuel cell",
+    },
+    # Noon-Energy storage techs
+    "li-ion 6h": {
+        "store": "battery storage",
+        "bicharger": "battery inverter",
+        "roundtrip_correction": 0.5,
+    },
+    "li-ion 24h": {
+        "store": "battery storage",
+        "bicharger": "battery inverter",
+        "roundtrip_correction": 0.5,
+    },
+    "pair 24h": {
+        "store": "Compressed-Air-Adiabatic-store",
+        "bicharger": "Compressed-Air-Adiabatic-bicharger",
+    },
+    "pair 100h": {
+        "store": "Compressed-Air-Adiabatic-store",
+        "bicharger": "Compressed-Air-Adiabatic-bicharger",
+    },
+    "mds": {
+        # iron-air battery
+        "store": "iron-air battery",
+        "charger": "iron-air battery charge",
+        "discharger": "iron-air battery discharge",
+    },
+    "res": {
+        # noon-energy storage
+        "store": "res battery",
+        "charger": "res battery charge",
+        "discharger": "res battery discharge",
+    },
+    "res 24h": {
+        # noon-energy storage
+        "store": "res battery 24h",
+        "charger": "res battery charge 24h",
+        "discharger": "res battery discharge 24h",
+    },
+    "res 300h": {
+        # noon-energy storage
+        "store": "res battery 300h",
+        "charger": "res battery charge 300h",
+        "discharger": "res battery discharge 300h",
+    },
+    "res 100h": {
+        # noon-energy storage
+        "store": "res battery 100h",
+        "charger": "res battery charge 100h",
+        "discharger": "res battery discharge 100h",
     },
 }
 
@@ -1220,7 +1257,12 @@ if __name__ == "__main__":
     if "snakemake" not in globals():
         from scripts._helpers import mock_snakemake
 
-        snakemake = mock_snakemake("add_electricity", clusters=60)
+        snakemake = mock_snakemake(
+            "add_electricity",
+            run="cy2021-mds-coes-overnight-caes-durations",
+            configfiles="config/config.noon.yaml",
+            clusters="adm",
+        )
     configure_logging(snakemake)  # pylint: disable=E0606
     set_scenario_config(snakemake)
 

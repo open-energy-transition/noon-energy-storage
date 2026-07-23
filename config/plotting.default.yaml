@@ -380,13 +380,19 @@ plotting:
     battery: "Battery Storage"
     H2: "Hydrogen Storage"
     li-ion: "Lithium-Ion Storage"
+    li-ion 24h: "Lithium-Ion Storage 24h"
     lfp: "Lithium-Ion-LFP Storage"
     vanadium: "Vanadium-Redox-Flow Storage"
     lair: "Liquid-Air Storage"
     pair: "Compressed-Air-Adiabatic Storage"
+    pair 100h: "Compressed-Air-Adiabatic Storage 100h"
     iron-air: "Iron-Air Storage"
     mds: "Iron-Air Storage" # noon-energy
-    coes: "Electrofuels Storage" # noon-energy
+    res: "Reversible Electrofuels Storage" # noon-energy
+    res 24h: "Reversible Electrofuels Storage 24h" # noon-energy
+    res 100h: "Reversible Electrofuels Storage 100h" # noon-energy
+    res 200h: "Reversible Electrofuels Storage 200h" # noon-energy
+    res 300h: "Reversible Electrofuels Storage 300h" # noon-energy
     lines: "Transmission Lines"
     ror: "Run of River"
     load: "Load Shedding"
@@ -537,9 +543,12 @@ plotting:
     li-ion: '#ace37f'
     li-ion charger: '#ace37f'
     li-ion discharger: '#ace37f'
-    lfp: '#ace37f'
-    lfp charger: '#ace37f'
-    lfp discharger: '#ace37f'
+    li-ion 24h: '#6db85b'
+    li-ion 24h charger: '#6db85b'
+    li-ion 24h discharger: '#6db85b'
+    lfp: '#d4ed6a'
+    lfp charger: '#d4ed6a'
+    lfp discharger: '#d4ed6a'
     vanadium: '#9B111E'
     vanadium charger: '#9B111E'
     vanadium discharger: '#9B111E'
@@ -549,6 +558,9 @@ plotting:
     pair: '#003366'
     pair charger: '#003366'
     pair discharger: '#003366'
+    pair 100h: '#1a6ead'
+    pair 100h charger: '#1a6ead'
+    pair 100h discharger: '#1a6ead'
     iron-air: '#edba1c'
     iron-air charger: '#edba1c'
     iron-air discharger: '#edba1c'
@@ -557,9 +569,21 @@ plotting:
     mds: '#edba1c'
     mds charger: '#edba1c'
     mds discharger: '#edba1c'
-    coes: '#ed9d1c'
-    coes charger: '#ed9d1c'
-    coes discharger: '#ed9d1c'
+    res: '#c1440e'
+    res charger: '#c1440e'
+    res discharger: '#c1440e'
+    res 24h: '#e27547'
+    res 24h charger: '#e27547'
+    res 24h discharger: '#e27547'
+    res 100h: '#c1440e'
+    res 100h charger: '#c1440e'
+    res 100h discharger: '#c1440e'
+    res 200h: '#c1440e'
+    res 200h charger: '#c1440e'
+    res 200h discharger: '#c1440e'
+    res 300h: '#c1440e'
+    res 300h charger: '#c1440e'
+    res 300h discharger: '#c1440e'
 
     # hot water storage
     water tanks: '#e69487'

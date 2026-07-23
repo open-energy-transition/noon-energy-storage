@@ -1,0 +1,78 @@
+# -*- coding: utf-8 -*-
+# SPDX-FileCopyrightText: Contributors to PyPSA-Eur <https://github.com/pypsa/pypsa-eur>
+#
+# SPDX-License-Identifier: MIT
+
+### Technology
+# (weather year = 2021)
+
+cy2021-base:
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair"]
+      Store: ["H2"]
+
+
+cy2021-mds-coes:
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
+      Store: ["H2"]
+
+  costs:
+    custom_cost_fn: data/custom_costs_coes_300h_su.csv
+
+cy2021-mds-coes-store:
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds"]
+      Store: ["H2", "coes"]
+
+  costs:
+    custom_cost_fn: data/custom_costs_coes_base_store.csv
+
+cy2021-mds-coes-bio:
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
+      Store: ["H2"]
+
+  sector:
+    biomass: true
+
+  costs:
+    custom_cost_fn: data/custom_costs_coes_300h_su.csv
+
+cy2021-mds-coes-overnight:
+
+  foresight: overnight
+
+  electricity:
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
+      Store: ["H2"]
+
+  costs:
+    custom_cost_fn: data/custom_costs_coes_300h_su.csv
+
+cy2021-mds-coes-overnight-1H:
+
+  foresight: overnight
+
+  electricity:
+    max_hours:
+      coes: 200
+    extendable_carriers:
+      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
+      Store: ["H2"]
+
+  costs:
+    custom_cost_fn: data/custom_costs_coes_200h_su.csv
+
+  clustering:
+    temporal:
+      resolution_sector: 1h

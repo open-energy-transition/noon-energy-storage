@@ -6311,10 +6311,12 @@ if __name__ == "__main__":
 
         snakemake = mock_snakemake(
             "prepare_sector_network",
+            run="cy2021-lds",
+            config_files="config/config.noon.bz.3h.yaml",
             opts="",
-            clusters="10",
+            clusters="adm",
             sector_opts="",
-            planning_horizons="2050",
+            planning_horizons="2030",
         )
 
     configure_logging(snakemake)  # pylint: disable=E0606

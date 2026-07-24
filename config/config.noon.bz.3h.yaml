@@ -21,14 +21,9 @@ remote:
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#run
 run:
-  prefix: ""
+  prefix: "bz-3h"
   name:
-  # - cy2021-base
-  # - cy2021-mds-coes
-  # - cy2021-mds-coes-store
-  # - cy2021-mds-coes-bio
-  # - cy2021-mds-coes-overnight
-  - cy2021-mds-coes-overnight-1H
+  - cy2021-lds
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml
@@ -39,13 +34,13 @@ foresight: overnight # must be controlled here, not in the scenarios.noon.yaml
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#scenario
 scenario:
   clusters:
-  - "adm" # PyPSA-DE = 27, Form Energy = 52
+  - "adm" # 52 # FE input
   opts:
   - ""
   sector_opts:
   - ""
   planning_horizons:
-  - 2030
+  - 2030 # must be controlled here, not in the scenarios.noon.yaml
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#countries
 countries:
@@ -81,10 +76,36 @@ co2_budget:
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#electricity
 electricity:
   max_hours:
+    li-ion 6h: 6
+    li-ion 24h: 24
+    pair 24h: 24
+    pair 100h: 100
     mds: 100
-    coes: 300
-  extendable_carriers: # No CCGT and OCGT # FE input
-    StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
+    res 24h: 24
+    res 100h: 100
+    res 300h: 300
+    res 500h: 500
+  extendable_carriers:
+    Generator:
+    - solar
+    - "solar-hsat"
+    - onwind
+    - "offwind-ac"
+    - "offwind-dc"
+    - "offwind-float"
+    StorageUnit:
+    - "li-ion 6h"
+    - "li-ion 24h"
+    - lfp
+    - vanadium
+    - lair
+    - pair 24h
+    - pair 100h
+    - mds
+    - res 24h
+    - res 100h
+    - res 300h
+    - res 500h
     Store: ["H2"]
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#atlite
@@ -122,7 +143,7 @@ transmission_projects:
 # docs-load in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#load
 load:
   fixed_year: 2021
-  scaling_factor: 1.00
+  scaling_factor: 1.12 # 12% increase in EU27 industry demand from 2021 to 2030 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#pypsa_eur
 pypsa_eur:
@@ -139,7 +160,7 @@ pypsa_eur:
 sector:
   transport: true
   heating: true
-  biomass: false # false # FE input
+  biomass: false
   industry: false
   agriculture: false
   fossil_fuels: true
@@ -149,13 +170,13 @@ sector:
       2020: 0.0
       2025: 0.1
       2030: 0.25
-      2035: 0.4 # 0.45 # FE input
+      2035: 0.4 # 0.45 FE input
       2040: 0.55
       2045: 0.75
       2050: 1.0
   bev_dsm: true
   bev_dsm_availability: 0.5 # 0.2 # FE input
-  bev_charge_rate: 0.011 # 0.007 # FE input
+  bev_charge_rate: 0.011 #0.007 # FE input
   v2g: true
   land_transport_fuel_cell_share:
     2020: 0
@@ -208,7 +229,6 @@ sector:
   hydrogen_turbine: false
   hydrogen_underground_storage: true
   hydrogen_underground_storage_locations:
-  - onshore  # no onshore # FE input
   - nearshore
   H2_network: false
   gas_network: false
@@ -217,7 +237,7 @@ sector:
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#costs
 costs:
   year: 2030
-  custom_cost_fn: data/custom_costs_coes_300h_su.csv
+  custom_cost_fn: data/custom_costs_res_noon_energy.csv
 
 # docs in https://pypsa-eur.readthedocs.io/en/latest/configuration.html#clustering
 clustering:

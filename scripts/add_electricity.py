@@ -159,17 +159,23 @@ STORE_LOOKUP = {
         "charger": "res battery charge 24h",
         "discharger": "res battery discharge 24h",
     },
+    "res 100h": {
+        # noon-energy storage
+        "store": "res battery 100h",
+        "charger": "res battery charge 100h",
+        "discharger": "res battery discharge 100h",
+    },
     "res 300h": {
         # noon-energy storage
         "store": "res battery 300h",
         "charger": "res battery charge 300h",
         "discharger": "res battery discharge 300h",
     },
-    "res 100h": {
+    "res 500h": {
         # noon-energy storage
-        "store": "res battery 100h",
-        "charger": "res battery charge 100h",
-        "discharger": "res battery discharge 100h",
+        "store": "res battery 500h",
+        "charger": "res battery charge 500h",
+        "discharger": "res battery discharge 500h",
     },
 }
 

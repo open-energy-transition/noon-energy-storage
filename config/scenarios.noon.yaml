@@ -4,75 +4,115 @@
 # SPDX-License-Identifier: MIT
 
 ### Technology
-# (weather year = 2021)
 
-cy2021-base:
-
-  electricity:
-    extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair"]
-      Store: ["H2"]
-
-
-cy2021-mds-coes:
+cy2021-base: # no mds, no res
 
   electricity:
     extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
-      Store: ["H2"]
+      StorageUnit:
+      - "li-ion 6h"
+      - "li-ion 24h"
+      - lfp
+      - vanadium
+      - lair
+      - pair 24h
+      - pair 100h
 
-  costs:
-    custom_cost_fn: data/custom_costs_coes_300h_su.csv
-
-cy2021-mds-coes-store:
-
-  electricity:
-    extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds"]
-      Store: ["H2", "coes"]
-
-  costs:
-    custom_cost_fn: data/custom_costs_coes_base_store.csv
-
-cy2021-mds-coes-bio:
+cy2021-lds: # mds + res
 
   electricity:
     extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "mds", "coes"]
+      StorageUnit:
+      - "li-ion 6h"
+      - "li-ion 24h"
+      - lfp
+      - vanadium
+      - lair
+      - pair 24h
+      - pair 100h
+      - mds
+      - res 24h
+      - res 100h
+      - res 300h
+      - res 500h
+
+cy2021-lds-store: # res modelled as store+links
+
+  electricity:
+    extendable_carriers:
+      StorageUnit:
+      - "li-ion 6h"
+      - "li-ion 24h"
+      - lfp
+      - vanadium
+      - lair
+      - pair 24h
+      - pair 100h
+      - mds
+      Store:
+      - H2
+      - res
+
+### Weather year
+cy2023-lds: # weather year 2023
+
+  snapshots:
+    start: "2023-01-01"
+    end: "2024-01-01"
+    inclusive: left
+
+  atlite:
+    default_cutout: "europe-2023-sarah3-era5"
+    cutouts:
+      "europe-1940-2024-era5":
+        time:
+        - '2023'
+        - '2023'
+  load:
+    fixed_year: 2023
+    scaling_factor: 1.20 # 20% increase in EU27 industry demand from 2023 to 2030 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
+
+### Foresight
+cy2021-lds-brownfield: # myopic foresight (w/ existing biomass CHP and nuclear + CGT and OCGT expansion allowed)
+
+  foresight: myopic
+
+  electricity:
+    extendable_carriers:
+      Generator:
+      - solar
+      - "solar-hsat"
+      - onwind
+      - "offwind-ac"
+      - "offwind-dc"
+      - "offwind-float"
+      - CCGT
+      - OCGT
+      StorageUnit:
+      - "li-ion 6h"
+      - "li-ion 24h"
+      - lfp
+      - vanadium
+      - lair
+      - pair 24h
+      - pair 100h
+      - mds
+      - res 24h
+      - res 100h
+      - res 300h
+      - res 500h
       Store: ["H2"]
 
   sector:
     biomass: true
 
-  costs:
-    custom_cost_fn: data/custom_costs_coes_300h_su.csv
+### Planning horizon
+cy2021-lds-2040: # 2040
 
-cy2021-mds-coes-overnight:
+  scenario:
+    planning_horizons:
+    - 2040
 
-  foresight: overnight
-
-  electricity:
-    extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
-      Store: ["H2"]
-
-  costs:
-    custom_cost_fn: data/custom_costs_coes_300h_su.csv
-
-cy2021-mds-coes-overnight-1H:
-
-  foresight: overnight
-
-  electricity:
-    max_hours:
-      coes: 200
-    extendable_carriers:
-      StorageUnit: ["li-ion", "lfp", "vanadium", "lair", "pair", "mds", "coes"]
-      Store: ["H2"]
-
-  costs:
-    custom_cost_fn: data/custom_costs_coes_200h_su.csv
-
-  clustering:
-    temporal:
-      resolution_sector: 1h
+  load:
+    fixed_year: 2021
+    scaling_factor: 1.31 # 31% increase in EU27 industry demand from 2021 to 2040 (source: https://2026.entsos-tyndp-scenarios.eu/download/)

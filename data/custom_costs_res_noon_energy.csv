@@ -17,6 +17,15 @@ all,Compressed-Air-Adiabatic-store,lifetime,40,years,Form Energy assumption,
 all,Compressed-Air-Adiabatic-bicharger,investment,1932000,EUR/MW,Form Energy assumption,"Raw data: 1725000 €2022/MW
 - From €2022 to €2025 multiplying by ~ 1.12 (Source: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_ainr/default/table?lang=en&category=prc.prc_hicp.prc_hicp_ecoicop2)"
 all,Compressed-Air-Adiabatic-bicharger,lifetime,40,years,Form Energy assumption,
+all,res battery 500h,investment,4956,EUR/MWh,Noon Energy (duration = 300 h),"Raw data: 5.6 $2025/kWh_discharge
+- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
+all,res battery 500h,FOM,3.4,%/year,Noon Energy (duration = 300 h),"Raw data: 95 $2025/kW_discharge
+- Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
+all,res battery 500h,lifetime,30,years,Noon Energy (duration = 300 h),
+all,res battery discharge 500h,efficiency,0.75,per unit,Noon Energy (duration = 300 h),
+all,res battery discharge 500h,lifetime,30,years,Noon Energy (duration = 300 h),
+all,res battery charge 500h,efficiency,0.85,per unit,Noon Energy (duration = 300 h),
+all,res battery charge 500h,lifetime,30,years,Noon Energy (duration = 300 h),
 all,res battery 300h,investment,7080,EUR/MWh,Noon Energy (duration = 300 h),"Raw data: 8 $2025/kWh_discharge
 - From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
 all,res battery 300h,FOM,4,%/year,Noon Energy (duration = 300 h),"Raw data: 95 $2025/kW_discharge

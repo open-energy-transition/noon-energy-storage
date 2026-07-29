@@ -17,62 +17,161 @@ all,Compressed-Air-Adiabatic-store,lifetime,40,years,Form Energy assumption,
 all,Compressed-Air-Adiabatic-bicharger,investment,1932000,EUR/MW,Form Energy assumption,"Raw data: 1725000 €2022/MW
 - From €2022 to €2025 multiplying by ~ 1.12 (Source: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_ainr/default/table?lang=en&category=prc.prc_hicp.prc_hicp_ecoicop2)"
 all,Compressed-Air-Adiabatic-bicharger,lifetime,40,years,Form Energy assumption,
-all,res battery 500h,investment,4956,EUR/MWh,Noon Energy (duration = 300 h),"Raw data: 5.6 $2025/kWh_discharge
+2030,res battery 500h,investment,4956,EUR/MWh,Noon Energy (duration = 300 h),"Raw data: 5.6 $2025/kWh_discharge
 - From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
-all,res battery 500h,FOM,3.4,%/year,Noon Energy (duration = 300 h),"Raw data: 95 $2025/kW_discharge
+2030,res battery 500h,FOM,3.4,%/year,Noon Energy (duration = 300 h),"Raw data: 95 $2025/kW_discharge
 - Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
-all,res battery 500h,lifetime,30,years,Noon Energy (duration = 300 h),
-all,res battery discharge 500h,efficiency,0.75,per unit,Noon Energy (duration = 300 h),
-all,res battery discharge 500h,lifetime,30,years,Noon Energy (duration = 300 h),
-all,res battery charge 500h,efficiency,0.85,per unit,Noon Energy (duration = 300 h),
-all,res battery charge 500h,lifetime,30,years,Noon Energy (duration = 300 h),
-all,res battery 300h,investment,7080,EUR/MWh,Noon Energy (duration = 300 h),"Raw data: 8 $2025/kWh_discharge
+2030,res battery 500h,lifetime,30,years,Noon Energy (duration = 300 h),
+2030,res battery discharge 500h,efficiency,0.75,per unit,Noon Energy (duration = 300 h),
+2030,res battery discharge 500h,lifetime,30,years,Noon Energy (duration = 300 h),
+2030,res battery charge 500h,efficiency,0.85,per unit,Noon Energy (duration = 300 h),
+2030,res battery charge 500h,lifetime,30,years,Noon Energy (duration = 300 h),
+2030,res battery 300h,investment,7080,EUR/MWh,Noon Energy (duration = 300 h),"Raw data: 8 $2025/kWh_discharge
 - From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
-all,res battery 300h,FOM,4,%/year,Noon Energy (duration = 300 h),"Raw data: 95 $2025/kW_discharge
+2030,res battery 300h,FOM,4,%/year,Noon Energy (duration = 300 h),"Raw data: 95 $2025/kW_discharge
 - Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
-all,res battery 300h,lifetime,30,years,Noon Energy (duration = 300 h),
-all,res battery discharge 300h,efficiency,0.75,per unit,Noon Energy (duration = 300 h),
-all,res battery discharge 300h,lifetime,30,years,Noon Energy (duration = 300 h),
-all,res battery charge 300h,efficiency,0.85,per unit,Noon Energy (duration = 300 h),
-all,res battery charge 300h,lifetime,30,years,Noon Energy (duration = 300 h),
-all,res battery 200h,investment,9735,EUR/MWh,Noon Energy (duration = 200 h),"Raw data: 11 $2025/kWh_discharge
+2030,res battery 300h,lifetime,30,years,Noon Energy (duration = 300 h),
+2030,res battery discharge 300h,efficiency,0.75,per unit,Noon Energy (duration = 300 h),
+2030,res battery discharge 300h,lifetime,30,years,Noon Energy (duration = 300 h),
+2030,res battery charge 300h,efficiency,0.85,per unit,Noon Energy (duration = 300 h),
+2030,res battery charge 300h,lifetime,30,years,Noon Energy (duration = 300 h),
+2030,res battery 100h,investment,17699,EUR/MWh,Noon Energy (duration = 100 h),"Raw data: 20 $2025/kWh_discharge
 - From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
-all,res battery 200h,FOM,4.3,%/year,Noon Energy (duration = 200 h),"Raw data: 95 $2025/kW_discharge
+2030,res battery 100h,FOM,4.8,%/year,Noon Energy (duration = 100 h),"Raw data: 95 $2025/kW_discharge
 - Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
-all,res battery 200h,lifetime,30,years,Noon Energy (duration = 200 h),
-all,res battery discharge 200h,efficiency,0.75,per unit,Noon Energy (duration = 200 h),
-all,res battery discharge 200h,lifetime,30,years,Noon Energy (duration = 200 h),
-all,res battery charge 200h,efficiency,0.85,per unit,Noon Energy (duration = 200 h),
-all,res battery charge 200h,lifetime,30,years,Noon Energy (duration = 200 h),
-all,res battery 100h,investment,17699,EUR/MWh,Noon Energy (duration = 100 h),"Raw data: 20 $2025/kWh_discharge
-- From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
-all,res battery 100h,FOM,4.8,%/year,Noon Energy (duration = 100 h),"Raw data: 95 $2025/kW_discharge
-- Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
-all,res battery 100h,lifetime,30,years,Noon Energy (duration = 100 h),
-all,res battery discharge 100h,efficiency,0.75,per unit,Noon Energy (duration = 100 h),
-all,res battery discharge 100h,lifetime,30,years,Noon Energy (duration = 100 h),
-all,res battery charge 100h,efficiency,0.85,per unit,Noon Energy (duration = 100 h),
-all,res battery charge 100h,lifetime,30,years,Noon Energy (duration = 100 h),
-all,res battery 24h,investment,68142,EUR/MWh,Noon Energy (duration = 24 h),"Raw data:77 $2025/kWh_discharge
+2030,res battery 100h,lifetime,30,years,Noon Energy (duration = 100 h),
+2030,res battery discharge 100h,efficiency,0.75,per unit,Noon Energy (duration = 100 h),
+2030,res battery discharge 100h,lifetime,30,years,Noon Energy (duration = 100 h),
+2030,res battery charge 100h,efficiency,0.85,per unit,Noon Energy (duration = 100 h),
+2030,res battery charge 100h,lifetime,30,years,Noon Energy (duration = 100 h),
+2030,res battery 24h,investment,68142,EUR/MWh,Noon Energy (duration = 24 h),"Raw data:77 $2025/kWh_discharge
 - Derived starting from 1800 $2025/kW / duration + 2 $2025/kWh
 - From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)"
-all,res battery 24h,FOM,5.1,%/year,Noon Energy (duration = 24 h),"Raw data: 95 $2025/kW_discharge
+2030,res battery 24h,FOM,5.1,%/year,Noon Energy (duration = 24 h),"Raw data: 95 $2025/kW_discharge
 - Derived dividing absolute FOM by (CAPEX-Energy * Duration)"
-all,res battery 24h,lifetime,30,years,Noon Energy (duration = 24 h),
-all,res battery discharge 24h,efficiency,0.75,per unit,Noon Energy (duration = 24 h),
-all,res battery discharge 24h,lifetime,30,years,Noon Energy (duration = 24 h),
-all,res battery charge 24h,efficiency,0.85,per unit,Noon Energy (duration = 24 h),
-all,res battery charge 24h,lifetime,30,years,Noon Energy (duration = 24 h),
-all,res battery,investment,1327,EUR/MWh,Noon Energy (base),"Raw data: 2 $2025/kWh_discharge
+2030,res battery 24h,lifetime,30,years,Noon Energy (duration = 24 h),
+2030,res battery discharge 24h,efficiency,0.75,per unit,Noon Energy (duration = 24 h),
+2030,res battery discharge 24h,lifetime,30,years,Noon Energy (duration = 24 h),
+2030,res battery charge 24h,efficiency,0.85,per unit,Noon Energy (duration = 24 h),
+2030,res battery charge 24h,lifetime,30,years,Noon Energy (duration = 24 h),
+2030,res battery,investment,1327,EUR/MWh,Noon Energy (base),"Raw data: 2 $2025/kWh_discharge
 - From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)
 - From /kWh_discharge to /kWh_charge multiplying by eff_discharge = 0.75"
-all,res battery,lifetime,30,years,Noon Energy (base),
-all,res battery discharge,investment,1592920,EUR/MW,Noon Energy (base),"Raw data: 1800 $2025/kW_discharge
+2030,res battery,lifetime,30,years,Noon Energy (base),
+2030,res battery discharge,investment,1592920,EUR/MW,Noon Energy (base),"Raw data: 1800 $2025/kW_discharge
 - From $2025 (original data) to €2025 (model currency)  multiplying by 1/1.13 ~ 0.885 (Source: https://tassidicambio.bancaditalia.it/terzevalute-wf-ui-web/averageRates)
 - From /kWh_discharge to /kWh_charge is automatically done within PyPSA-Eur (link capex must refer to bus0)"
-all,res battery discharge,FOM,5.3,%/year,Noon Energy (base),"Raw data: 95 $2025/kW_discharge
+2030,res battery discharge,FOM,5.3,%/year,Noon Energy (base),"Raw data: 95 $2025/kW_discharge
 - Derived dividing absolute FOM by CAPEX-power"
-all,res battery discharge,efficiency,0.75,per unit,Noon Energy (base),
-all,res battery discharge,lifetime,30,years,Noon Energy (base),
-all,res battery charge,efficiency,0.85,per unit,Noon Energy (base),
-all,res battery charge,lifetime,30,years,Noon Energy (base),
+2030,res battery discharge,efficiency,0.75,per unit,Noon Energy (base),
+2030,res battery discharge,lifetime,30,years,Noon Energy (base),
+2030,res battery charge,efficiency,0.85,per unit,Noon Energy (base),
+2030,res battery charge,lifetime,30,years,Noon Energy (base),
+2035,res battery 500h,investment,4018,EUR/MWh,,
+2035,res battery 500h,FOM,4.8,%/year,,
+2035,res battery 500h,lifetime,30,years,,
+2035,res battery discharge 500h,efficiency,0.75,per unit,,
+2035,res battery discharge 500h,lifetime,30,years,,
+2035,res battery charge 500h,efficiency,0.85,per unit,,
+2035,res battery charge 500h,lifetime,30,years,,
+2035,res battery 300h,investment,5811,EUR/MWh,,
+2035,res battery 300h,FOM,4.5,%/year,,
+2035,res battery 300h,lifetime,30,years,,
+2035,res battery discharge 300h,efficiency,0.75,per unit,,
+2035,res battery discharge 300h,lifetime,30,years,,
+2035,res battery charge 300h,efficiency,0.85,per unit,,
+2035,res battery charge 300h,lifetime,30,years,,
+2035,res battery 100h,investment,14779,EUR/MWh,,
+2035,res battery 100h,FOM,3.8,%/year,,
+2035,res battery 100h,lifetime,30,years,,
+2035,res battery discharge 100h,efficiency,0.75,per unit,,
+2035,res battery discharge 100h,lifetime,30,years,,
+2035,res battery charge 100h,efficiency,0.85,per unit,,
+2035,res battery charge 100h,lifetime,30,years,,
+2035,res battery 24h,investment,57375,EUR/MWh,,
+2035,res battery 24h,FOM,4.8,%/year,,
+2035,res battery 24h,lifetime,30,years,,
+2035,res battery discharge 24h,efficiency,0.75,per unit,,
+2035,res battery discharge 24h,lifetime,30,years,,
+2035,res battery charge 24h,efficiency,0.85,per unit,,
+2035,res battery charge 24h,lifetime,30,years,,
+2035,res battery,investment,996,EUR/MWh,,
+2035,res battery,lifetime,30,years,,
+2035,res battery discharge,investment,1345132.74336283,EUR/MW,,
+2035,res battery discharge,FOM,4.9,%/year,,
+2035,res battery discharge,efficiency,0.75,per unit,,
+2035,res battery discharge,lifetime,30,years,,
+2035,res battery charge,efficiency,0.85,per unit,,
+2035,res battery charge,lifetime,30,years,,
+2040,res battery 500h,investment,3451,EUR/MWh,,
+2040,res battery 500h,FOM,3.6,%/year,,
+2040,res battery 500h,lifetime,30,years,,
+2040,res battery discharge 500h,efficiency,0.75,per unit,,
+2040,res battery discharge 500h,lifetime,30,years,,
+2040,res battery charge 500h,efficiency,0.85,per unit,,
+2040,res battery charge 500h,lifetime,30,years,,
+2040,res battery 300h,investment,4985,EUR/MWh,,
+2040,res battery 300h,FOM,4.1,%/year,,
+2040,res battery 300h,lifetime,30,years,,
+2040,res battery discharge 300h,efficiency,0.75,per unit,,
+2040,res battery discharge 300h,lifetime,30,years,,
+2040,res battery charge 300h,efficiency,0.85,per unit,,
+2040,res battery charge 300h,lifetime,30,years,,
+2040,res battery 100h,investment,12655,EUR/MWh,,
+2040,res battery 100h,FOM,4.9,%/year,,
+2040,res battery 100h,lifetime,30,years,,
+2040,res battery discharge 100h,efficiency,0.75,per unit,,
+2040,res battery discharge 100h,lifetime,30,years,,
+2040,res battery charge 100h,efficiency,0.85,per unit,,
+2040,res battery charge 100h,lifetime,30,years,,
+2040,res battery 24h,investment,49086,EUR/MWh,,
+2040,res battery 24h,FOM,5.3,%/year,,
+2040,res battery 24h,lifetime,30,years,,
+2040,res battery discharge 24h,efficiency,0.75,per unit,,
+2040,res battery discharge 24h,lifetime,30,years,,
+2040,res battery charge 24h,efficiency,0.85,per unit,,
+2040,res battery charge 24h,lifetime,30,years,,
+2040,res battery,investment,863,EUR/MWh,,
+2040,res battery,lifetime,30,years,,
+2040,res battery discharge,investment,1150442.47787611,EUR/MW,,
+2040,res battery discharge,FOM,5.4,%/year,,
+2040,res battery discharge,efficiency,0.75,per unit,,
+2040,res battery discharge,lifetime,30,years,,
+2040,res battery charge,efficiency,0.85,per unit,,
+2040,res battery charge,lifetime,30,years,,
+2050,res battery 500h,investment,3009,EUR/MWh,,
+2050,res battery 500h,FOM,3.8,%/year,,
+2050,res battery 500h,lifetime,30,years,,
+2050,res battery discharge 500h,efficiency,0.75,per unit,,
+2050,res battery discharge 500h,lifetime,30,years,,
+2050,res battery charge 500h,efficiency,0.85,per unit,,
+2050,res battery charge 500h,lifetime,30,years,,
+2050,res battery 300h,investment,4425,EUR/MWh,,
+2050,res battery 300h,FOM,4.3,%/year,,
+2050,res battery 300h,lifetime,30,years,,
+2050,res battery discharge 300h,efficiency,0.75,per unit,,
+2050,res battery discharge 300h,lifetime,30,years,,
+2050,res battery charge 300h,efficiency,0.85,per unit,,
+2050,res battery charge 300h,lifetime,30,years,,
+2050,res battery 100h,investment,11504,EUR/MWh,,
+2050,res battery 100h,FOM,5,%/year,,
+2050,res battery 100h,lifetime,30,years,,
+2050,res battery discharge 100h,efficiency,0.75,per unit,,
+2050,res battery discharge 100h,lifetime,30,years,,
+2050,res battery charge 100h,efficiency,0.85,per unit,,
+2050,res battery charge 100h,lifetime,30,years,,
+2050,res battery 24h,investment,45133,EUR/MWh,,
+2050,res battery 24h,FOM,5.3,%/year,,
+2050,res battery 24h,lifetime,30,years,,
+2050,res battery discharge 24h,efficiency,0.75,per unit,,
+2050,res battery discharge 24h,lifetime,30,years,,
+2050,res battery charge 24h,efficiency,0.85,per unit,,
+2050,res battery charge 24h,lifetime,30,years,,
+2050,res battery,investment,664,EUR/MWh,,
+2050,res battery,lifetime,30,years,,
+2050,res battery discharge,investment,1061946.90265487,EUR/MW,,
+2050,res battery discharge,FOM,5.4,%/year,,
+2050,res battery discharge,efficiency,0.75,per unit,,
+2050,res battery discharge,lifetime,30,years,,
+2050,res battery charge,efficiency,0.85,per unit,,
+2050,res battery charge,lifetime,30,years,,

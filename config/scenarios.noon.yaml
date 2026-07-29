@@ -128,15 +128,15 @@ cy2021-lds-2040: # 2040
     fixed_year: 2021
     scaling_factor: 1.31 # 31% increase in EU27 industry demand from 2021 to 2040 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
 
-  cy2021-lds-2050: # 2050
+cy2021-lds-2050: # 2050
 
-    scenario:
-      planning_horizons:
-      - 2050
+  scenario:
+    planning_horizons:
+    - 2050
 
-    load:
-      fixed_year: 2021
-      scaling_factor: 1.44 # 44% increase in EU27 industry demand from 2021 to 2050 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
+  load:
+    fixed_year: 2021
+    scaling_factor: 1.44 # 44% increase in EU27 industry demand from 2021 to 2050 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
 
 ## brownfield
 cy2021-lds-brownfield-2035: # 2035
@@ -189,6 +189,7 @@ cy2021-lds-brownfield-2040: # 2040
   load:
     fixed_year: 2021
     scaling_factor: 1.31 # 31% increase in EU27 industry demand from 2021 to 2040 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
+
   foresight: myopic
 
   electricity:
@@ -220,43 +221,43 @@ cy2021-lds-brownfield-2040: # 2040
   sector:
     biomass: true
 
-  cy2021-lds-brownfield-2050: # 2050
+cy2021-lds-brownfield-2050: # 2050
 
-    scenario:
-      planning_horizons:
-      - 2050
+  scenario:
+    planning_horizons:
+    - 2050
 
-    load:
-      fixed_year: 2021
-      scaling_factor: 1.44 # 44% increase in EU27 industry demand from 2021 to 2050 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
+  load:
+    fixed_year: 2021
+    scaling_factor: 1.44 # 44% increase in EU27 industry demand from 2021 to 2050 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
 
-    foresight: myopic
+  foresight: myopic
 
-    electricity:
-      extendable_carriers:
-        Generator:
-        - solar
-        - "solar-hsat"
-        - onwind
-        - "offwind-ac"
-        - "offwind-dc"
-        - "offwind-float"
-        - CCGT
-        - OCGT
-        StorageUnit:
-        - "li-ion 6h"
-        - "li-ion 24h"
-        - lfp
-        - vanadium
-        - lair
-        - pair 24h
-        - pair 100h
-        - mds
-        - res 24h
-        - res 100h
-        - res 300h
-        - res 500h
-        Store: ["H2"]
+  electricity:
+    extendable_carriers:
+      Generator:
+      - solar
+      - "solar-hsat"
+      - onwind
+      - "offwind-ac"
+      - "offwind-dc"
+      - "offwind-float"
+      - CCGT
+      - OCGT
+      StorageUnit:
+      - "li-ion 6h"
+      - "li-ion 24h"
+      - lfp
+      - vanadium
+      - lair
+      - pair 24h
+      - pair 100h
+      - mds
+      - res 24h
+      - res 100h
+      - res 300h
+      - res 500h
+      Store: ["H2"]
 
-    sector:
-      biomass: true
+  sector:
+    biomass: true

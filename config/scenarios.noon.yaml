@@ -5,7 +5,7 @@
 
 ### Technology
 
-cy2021-base: # no mds, no res
+cy2021-base-2030: # no mds, no res
 
   electricity:
     extendable_carriers:
@@ -18,7 +18,7 @@ cy2021-base: # no mds, no res
       - pair 24h
       - pair 100h
 
-cy2021-lds: # mds + res
+cy2021-lds-2030: # mds + res
 
   electricity:
     extendable_carriers:
@@ -36,23 +36,23 @@ cy2021-lds: # mds + res
       - res 300h
       - res 500h
 
-cy2021-lds-res-24h-300h: # mds + res 24h + res 300h
+# cy2021-lds-res-24h-300h-2030: # mds + res 24h + res 300h
 
-  electricity:
-    extendable_carriers:
-      StorageUnit:
-      - "li-ion 6h"
-      - "li-ion 24h"
-      - lfp
-      - vanadium
-      - lair
-      - pair 24h
-      - pair 100h
-      - mds
-      - res 24h
-      - res 300h
+#   electricity:
+#     extendable_carriers:
+#       StorageUnit:
+#       - "li-ion 6h"
+#       - "li-ion 24h"
+#       - lfp
+#       - vanadium
+#       - lair
+#       - pair 24h
+#       - pair 100h
+#       - mds
+#       - res 24h
+#       - res 300h
 
-cy2021-lds-store: # res modelled as store+links
+cy2021-lds-store-2030: # res modelled as store+links
 
   electricity:
     extendable_carriers:
@@ -70,7 +70,7 @@ cy2021-lds-store: # res modelled as store+links
       - res
 
 ### Weather year
-cy2023-lds: # weather year 2023
+cy2023-lds-2030: # weather year 2023
 
   snapshots:
     start: "2023-01-01"
@@ -89,7 +89,7 @@ cy2023-lds: # weather year 2023
     scaling_factor: 1.20 # 20% increase in EU27 industry demand from 2023 to 2030 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
 
 ### Foresight
-cy2021-lds-brownfield: # myopic foresight (w/ existing biomass CHP and nuclear + CGT and OCGT expansion allowed)
+cy2021-lds-brownfield-2030: # myopic foresight (w/ existing biomass CHP and nuclear + CGT and OCGT expansion allowed)
 
   foresight: myopic
 
@@ -130,6 +130,9 @@ cy2021-lds-2035: # 2035
     planning_horizons:
     - 2035
 
+  costs:
+    year: 2035
+
   load:
     fixed_year: 2021
     scaling_factor: 1.20 # 20% increase in EU27 industry demand from 2021 to 2035 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
@@ -139,6 +142,9 @@ cy2021-lds-2040: # 2040
   scenario:
     planning_horizons:
     - 2040
+
+  costs:
+    year: 2040
 
   load:
     fixed_year: 2021
@@ -150,6 +156,9 @@ cy2021-lds-2050: # 2050
     planning_horizons:
     - 2050
 
+  costs:
+    year: 2050
+
   load:
     fixed_year: 2021
     scaling_factor: 1.44 # 44% increase in EU27 industry demand from 2021 to 2050 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
@@ -160,6 +169,9 @@ cy2021-lds-brownfield-2035: # 2035
   scenario:
     planning_horizons:
     - 2035
+
+  costs: # this should not be neecessary as in the myopic case the planning horizon is used to select costs data
+    year: 2035
 
   load:
     fixed_year: 2021
@@ -202,6 +214,9 @@ cy2021-lds-brownfield-2040: # 2040
     planning_horizons:
     - 2040
 
+  costs: # this should not be neecessary as in the myopic case the planning horizon is used to select costs data
+    year: 2040
+
   load:
     fixed_year: 2021
     scaling_factor: 1.31 # 31% increase in EU27 industry demand from 2021 to 2040 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
@@ -242,6 +257,9 @@ cy2021-lds-brownfield-2050: # 2050
   scenario:
     planning_horizons:
     - 2050
+
+  costs: # this should not be neecessary as in the myopic case the planning horizon is used to select costs data
+    year: 2050
 
   load:
     fixed_year: 2021

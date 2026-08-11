@@ -36,22 +36,6 @@ cy2021-lds-2030: # mds + res
       - res 300h
       - res 500h
 
-# cy2021-lds-res-24h-300h-2030: # mds + res 24h + res 300h
-
-#   electricity:
-#     extendable_carriers:
-#       StorageUnit:
-#       - "li-ion 6h"
-#       - "li-ion 24h"
-#       - lfp
-#       - vanadium
-#       - lair
-#       - pair 24h
-#       - pair 100h
-#       - mds
-#       - res 24h
-#       - res 300h
-
 cy2021-lds-store-2030: # res modelled as store+links
 
   electricity:

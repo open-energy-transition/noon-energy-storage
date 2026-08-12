@@ -23,7 +23,7 @@ remote:
 run:
   prefix: "52buses-3h"
   name:
-  - cy2021-lds-brownfield
+  - cy2021-lds-2030
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml

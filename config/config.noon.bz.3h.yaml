@@ -23,7 +23,7 @@ remote:
 run:
   prefix: "bz-3h"
   name:
-  - cy2021-lds-res-24h-300h
+  - cy2021-lds-2030
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml

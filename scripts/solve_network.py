@@ -1054,16 +1054,16 @@ def add_battery_constraints(n):
     n.model.add_constraints(lhs == 0, name="Link-charger_ratio")
 
 
-def add_coes_constraints(n):
+def add_res_constraints(n):
     """
-    Add constraint for coes battery ensuring that charger <= 5 * discharger, i.e.
+    Add constraint for res battery ensuring that charger <= 5 * discharger, i.e.
     1 * charger_size - 5 * efficiency * discharger_size <= 0
     """
     if not n.links.p_nom_extendable.any():
         return
 
-    discharger_bool = n.links.index.str.contains("coes discharger")
-    charger_bool = n.links.index.str.contains("coes charger")
+    discharger_bool = n.links.index.str.contains("res discharger")
+    charger_bool = n.links.index.str.contains("res charger")
 
     dischargers_ext = n.links[discharger_bool].query("p_nom_extendable").index
     chargers_ext = n.links[charger_bool].query("p_nom_extendable").index
@@ -1074,7 +1074,7 @@ def add_coes_constraints(n):
         - n.model["Link-p_nom"].loc[dischargers_ext] * eff * 5
     )
 
-    n.model.add_constraints(lhs <= 0, name="Link-charger_ratio-coes")
+    n.model.add_constraints(lhs <= 0, name="Link-charger_ratio-res")
 
 
 def add_lossy_bidirectional_link_constraints(n):
@@ -1304,10 +1304,10 @@ def extra_functionality(
 
     add_battery_constraints(n)
 
-    if "coes" in n.config.get("electricity", {}).get("extendable_carriers", {}).get(
+    if "res" in n.config.get("electricity", {}).get("extendable_carriers", {}).get(
         "Store", []
     ):
-        add_coes_constraints(n)
+        add_res_constraints(n)
 
     add_lossy_bidirectional_link_constraints(n)
     add_pipe_retrofit_constraint(n)

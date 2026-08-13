@@ -3,6 +3,8 @@
 #
 # SPDX-License-Identifier: MIT
 """
+N.B.: this code is human-generated and improved and assisted by AI.
+
 Interactive runner for scenarios defined in config/scenarios.noon.yaml.
 
 For each scenario, the script compares its overrides against the merged base

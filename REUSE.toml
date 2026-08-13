@@ -134,3 +134,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "Open Energy Transition gGmbH"
 SPDX-License-Identifier = "MIT"
+
+# Jupyter notebooks cannot carry a comment header, so they are annotated here
+[[annotations]]
+path = [
+    "post-processing-custom/*.ipynb",
+]
+SPDX-FileCopyrightText = "Open Energy Transition gGmbH"
+SPDX-License-Identifier = "MIT"

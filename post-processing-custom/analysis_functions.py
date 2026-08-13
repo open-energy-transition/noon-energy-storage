@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: MIT
 
 """
+N.B.: this code is human-generated and improved and assisted by AI.
+
 Functions used by `analysis.ipynb` to post-process solved PyPSA-Eur networks, in the
 context of the noon-energy-project.
 

@@ -279,3 +279,47 @@ cy2021-lds-brownfield-2050: # 2050
 
   sector:
     biomass: true
+
+### Li-Ion costs
+cy2021-lds-lowLiIon-2030: # lower li-ion capital cost
+
+  electricity:
+    extendable_carriers:
+      StorageUnit:
+      - "li-ion 6h"
+      - "li-ion 24h"
+      - lfp
+      - vanadium
+      - lair
+      - pair 24h
+      - pair 100h
+      - mds
+      - res 24h
+      - res 100h
+      - res 300h
+      - res 500h
+
+  costs:
+    custom_cost_fn: data/custom_costs_res_noon_energy_li_ion.csv
+
+### Weather year
+cy2023-lds-lowLiIon-2030: # lower li-ion capital cost + weather year 2023
+
+  snapshots:
+    start: "2023-01-01"
+    end: "2024-01-01"
+    inclusive: left
+
+  atlite:
+    default_cutout: "europe-2023-sarah3-era5"
+    cutouts:
+      "europe-1940-2024-era5":
+        time:
+        - '2023'
+        - '2023'
+  load:
+    fixed_year: 2023
+    scaling_factor: 1.20 # 20% increase in EU27 industry demand from 2023 to 2030 (source: https://2026.entsos-tyndp-scenarios.eu/download/)
+
+  costs:
+    custom_cost_fn: data/custom_costs_res_noon_energy_li_ion.csv

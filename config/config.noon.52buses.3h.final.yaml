@@ -34,6 +34,8 @@ run:
   - cy2021-lds-brownfield-2050
   - cy2021-lds-store-2030
   - cy2023-lds-2030
+  - cy2021-lds-lowLiIon-2030
+  - cy2023-lds-lowLiIon-2030
   scenarios:
     enable: true
     file: config/scenarios.noon.yaml

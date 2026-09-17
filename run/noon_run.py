@@ -12,10 +12,12 @@ config (config.default.yaml + selected noon config) to decide how many
 resources to reuse from the reference scenario:
 
   prepare_sector_network  — only StorageUnit/Store extendable_carriers changed.
-                            *_elec.nc and snapshot_weightings are symlinked.
-  add_electricity         — Generator, foresight, planning_horizons, or
-                            load.scaling_factor changed. Topology files are
-                            symlinked; electricity networks are not.
+                            *_elec.nc, snapshot_weightings and the processed
+                            cost file are symlinked.
+  add_electricity         — Generator, foresight, planning_horizons,
+                            load.scaling_factor or costs changed. Topology
+                            files are symlinked; electricity networks and the
+                            processed cost file are not.
   full_rerun              — snapshots or atlite cutout changed. Nothing is
                             symlinked; every rule runs from scratch.
 
@@ -33,7 +35,7 @@ from pathlib import Path
 import yaml
 
 SCENARIOS_FILE = "config/scenarios.noon.yaml"
-_DEFAULT_REFERENCE = "cy2021-base"  # pre-selected default reference scenario
+_DEFAULT_REFERENCE = "cy2021-base-2030"  # pre-selected default reference scenario
 TARGET = "solve_sector_networks"
 
 # Topology networks safe to symlink regardless of restart level
@@ -42,6 +44,8 @@ _SAFE_NETWORK_RE = re.compile(
 )
 # Electricity networks safe to symlink when only sector/storage changes
 _ELEC_NETWORK_RE = re.compile(r"^networks/base_s_[a-zA-Z0-9]+_elec[^/]*\.nc$")
+# Processed cost data (output of process_cost_data), rebuilt whenever costs change
+_COSTS_RE = re.compile(r"^costs_[0-9]+_processed\.csv$")
 
 
 # ---------------------------------------------------------------------------
@@ -109,6 +113,12 @@ def get_restart_level(scenario_cfg: dict, base_cfg: dict) -> str:
             and (scenario_cfg.get("load") or {}).get("scaling_factor")
             != base_cfg.get("load", {}).get("scaling_factor", 1.0)
         ),
+        # Cost assumptions (e.g. custom_cost_fn) change costs_*_processed.csv,
+        # which feeds add_electricity and every rule downstream
+        any(
+            v != base_cfg.get("costs", {}).get(k)
+            for k, v in (scenario_cfg.get("costs") or {}).items()
+        ),
     ]
 
     if any(checks):
@@ -134,6 +144,9 @@ def _must_rerun(rel: str, restart_level: str) -> bool:
         return True
     if "snapshot_weightings_" in rel and rel.endswith(".csv"):
         return restart_level != "prepare_sector_network"
+    # Only reusable when costs are untouched, i.e. at prepare_sector_network
+    if _COSTS_RE.match(rel):
+        return restart_level != "prepare_sector_network"
     return False
 
 
@@ -147,16 +160,27 @@ def _align_symlink_mtime(link: Path, src: Path) -> None:
         return
 
 
-def symlink_resources(src: Path, dst: Path, restart_level: str) -> list[Path]:
-    """Symlink reusable files from reference dir to target dir."""
-    created = []
+def symlink_resources(
+    src: Path, dst: Path, restart_level: str
+) -> tuple[list[Path], list[Path]]:
+    """
+    Symlink reusable files from reference dir to target dir.
+
+    Returns the links created and the stale links removed. Stale links are
+    those left by a previous run at a laxer restart level: Snakemake would
+    consider them up-to-date outputs and skip rebuilding them.
+    """
+    created, removed = [], []
     for f in sorted(src.rglob("*")):
         if f.is_dir():
             continue
         rel = str(f.relative_to(src))
-        if _must_rerun(rel, restart_level):
-            continue
         link = dst / rel
+        if _must_rerun(rel, restart_level):
+            if link.is_symlink():
+                link.unlink()
+                removed.append(link)
+            continue
         if link.is_symlink():
             # Existing links may have fresh link mtimes from a previous run.
             # Align them so Snakemake does not treat upstream inputs as newer.
@@ -168,7 +192,7 @@ def symlink_resources(src: Path, dst: Path, restart_level: str) -> list[Path]:
         link.symlink_to(f.resolve())
         _align_symlink_mtime(link, f)
         created.append(link)
-    return created
+    return created, removed
 
 
 def cleanup_metadata(files: list[Path], base_config: str, cfg_args: str) -> None:
@@ -354,7 +378,9 @@ def main() -> None:
         elif restart_level == "full_rerun":
             print("  Snapshots/cutout changed → full rerun.")
         elif ref_dir is not None and ref_dir.is_dir():
-            links = symlink_resources(ref_dir, dst_dir, restart_level)
+            links, stale = symlink_resources(ref_dir, dst_dir, restart_level)
+            if stale:
+                print(f"  Removed {len(stale)} stale symlinks (to be rebuilt).")
             if links:
                 rerun_from = restart_level.replace("_", " ")
                 print(f"  Symlinked {len(links)} files (re-running from {rerun_from}).")

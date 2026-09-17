@@ -87,7 +87,7 @@ As for all the storage options in PyPSA-Eur, the `res` technology can be either 
 | Max charge power capacity (kW/kW_discharge) | 5:1 | 5:1 | 5:1 | 5:1 |
 
 ### 2-Scenario definition
-All the 11 scenarios available for the study are defined in [`scenarios.noon.yaml`](config/scenarios.noon.yaml), whereas the common settings are defined in [`config.noon.52buses.3h.final.yaml`](config/config.noon.52buses.3h.final.yaml). These scenarios can be grouped in 5 types and are summarized in [Table 2](#table-2):
+All the 13 scenarios available for the study are defined in [`scenarios.noon.yaml`](config/scenarios.noon.yaml), whereas the common settings are defined in [`config.noon.52buses.3h.final.yaml`](config/config.noon.52buses.3h.final.yaml). These scenarios can be grouped in 5 types and are summarized in [Table 2](#table-2):
 1) Base case: 2030 greenfield optimization w/o MDS and `res`.
 2) Greenfield LDS cases: greenfield optimization across all the planning horizons, w/ LDS. These scenarios do not allow the expansion of nuclear- and biomass-based power generation, aligning to the [form-energy-storage](https://github.com/open-energy-transition/form-energy-storage) project.
 3) Brownfield LDS cases: brownfield single-year optimization across all the planning horizons, w/LDS. These scenarios do not allow the expansion of nuclear- and biomass-based power generation, whereas they include the existing fleet.
@@ -112,7 +112,7 @@ All the 11 scenarios available for the study are defined in [`scenarios.noon.yam
 </tr>
 <tr>
 <td><code>cy2021-lds-2030</code></td>
-<td rowspan="9">Storage Unit</td>
+<td rowspan="11">Storage Unit</td>
 <td rowspan="9">li-ion 6h, li-ion 24h, lfp, vanadium, lair, pair 24h, pair 100h, mds, res 24h, res 100h, res 300h, res 500h, H2 (Store)</td>
 </tr>
 <tr>
@@ -148,9 +148,18 @@ All the 11 scenarios available for the study are defined in [`scenarios.noon.yam
 <tr>
 <td><code>cy2023-lds-2030</code></td>
 <td>2023</td>
-<td rowspan="2">2030</td>
-<td rowspan="2">Overnight (Greenfield)</td>
-<td rowspan="2">solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float</td>
+<td rowspan="4">2030</td>
+<td rowspan="4">Overnight (Greenfield)</td>
+<td rowspan="4">solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float</td>
+</tr>
+<tr>
+<td><code>cy2021-lds-lowLiIon-2030</code></td>
+<td>2021</td>
+<td rowspan="2">li-ion 6h, li-ion 24h, lfp, vanadium, lair, pair 24h, pair 100h, mds, res 24h, res 100h, res 300h, res 500h, H2 (Store)**</td>
+</tr>
+<tr>
+<td><code>cy2023-lds-lowLiIon-2030</code></td>
+<td>2023</td>
 </tr>
 <tr>
 <td><code>cy2021-lds-store-2030</code></td>
@@ -161,6 +170,8 @@ All the 11 scenarios available for the study are defined in [`scenarios.noon.yam
 </table>
 
 <sub>* li-ion = lithium-ion battery; lfp = lithium iron phosphate battery; vanadium = vanadium redox flow battery; lair = liquid air storage; pair = compressed air adiabatic storage; mds = iron-air battery; res = reversible electrofuel battery storage. `li-ion 24h` and `pair 24h` were added in this project and are not part of the default technology set, to have more competition across the different storage duration levels.</sub>
+
+<sub>** li-ion with lower capital cost: updated capital cost of 100 €2025/kWh, estimated as energy + power capital costs based on Ember's report ["How cheap is battery storage?"](https://ember-energy.org/latest-insights/how-cheap-is-battery-storage/).</sub>
 
 In addition, a sensitivity on spatial clustering is also available by selecting the following configuration files. Then, the same scenarios listed above can be studied:
 - [`config.noon.52buses.3h.yaml`](config/config.noon.52buses.3h.yaml): 52 buses with 31 nodes in Germany, aligning to the [form-energy-storage](https://github.com/open-energy-transition/form-energy-storage) project assumptions.
